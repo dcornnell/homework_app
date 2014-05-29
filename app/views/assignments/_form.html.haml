@@ -1,0 +1,17 @@
+=f.label :name
+%br
+=f.text_field :name
+%br
+=f.label :due_date
+%br
+=f.date_field :due_date
+%br
+Cohort
+=f.select :cohort_id, Cohort.all.collect {|u| ["#{u.course.title}, #{u.location.name}, #{u.start_date}", u.id]}
+%br
+=f.label :description
+=f.text_area :description
+=f.submit "Add an assignment"
+
+
+
