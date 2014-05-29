@@ -1,0 +1,10 @@
+=form_for @new_location, url: locations_path, method: :post do |f|
+	Name: 
+	%br
+	=f.text_field :name
+	%br
+	Address:
+	%br
+	=f.text_area :address
+	%br
+	=f.submit "add new location"

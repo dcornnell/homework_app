@@ -1,0 +1,11 @@
+=form_for @new_course, url: courses_path, method: :post do |f|
+	Title:
+	%br
+	=f.text_field :title
+	%br
+	Desciprtion:
+	%br
+	=f.text_area :description
+	%br
+	=f.submit "Add a new course"
+

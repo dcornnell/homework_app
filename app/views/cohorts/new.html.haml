@@ -1,0 +1,8 @@
+=form_for @new_cohort, url: cohorts_path, method: :post do |f|
+	Location
+	=f.select :location_id, Location.all.collect {|u| [u.name, u.id]}
+	Class
+	=f.select :course_id, Course.all.collect {|u| [u.title, u.id]}
+	Starting Date
+	=f.date_field :start_date
+	=f.submit "add cohort"

@@ -1,0 +1,9 @@
+%h1
+	=@cohort.course.title
+%h2
+	=@cohort.location.name
+	=@cohort.start_date
+-@cohort.users.each do |s|
+	=s.first_name
+	=s.last_name
+	%br
