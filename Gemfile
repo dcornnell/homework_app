@@ -19,7 +19,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'pg'
 gem 'rails_12factor', group: :production
-
+gem 'cancancan' , '~> 1.8'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
