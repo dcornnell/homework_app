@@ -1,0 +1,4 @@
+LOG:  database system was shut down at 2014-05-22 09:09:12 EDT
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+FATAL:  database "homework_app_development" does not exist
