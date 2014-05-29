@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+	load_and_authorize_resource param_method: :courses_params
 	def new
 		@new_course = Course.new
 	end

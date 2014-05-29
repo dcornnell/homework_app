@@ -10,6 +10,10 @@ class UsersController < ApplicationController
 
  def create
  	@new_user = User.new(user_params)
+ 	my_string = @new_user.email
+	if my_string.include? "@theironyard.com"
+   	@new_user.admin = "teacher"
+	end
  	if @new_user.save
  		redirect_to users_path
  	else

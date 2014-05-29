@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
  def new
  end
 
@@ -7,7 +8,10 @@ class SessionsController < ApplicationController
  	if user
  		session[:user_id] = user.id
  		redirect_to users_path, notice: "logged in"
+ 	else
+ 		redirect_to locations_path
  	end
+
  end
 
  def destroy
