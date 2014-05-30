@@ -1,0 +1,8 @@
+%h1 
+	=@user.first_name 
+
+-@user.homeworks.each do |h|
+	=h.title
+	=h.status
+	=link_to "view",homework_path(h.id.to_i)
+	=link_to "edit", edit_homework_path(h.id.to_i)

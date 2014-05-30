@@ -7,3 +7,32 @@
 	=s.first_name
 	=s.last_name
 	%br
+%h1 Assignments
+-@cohort.assignments.each do |a|
+	
+	%br
+	=a.name
+	-if current_user.admin == "teacher"
+		-if a.name
+			=link_to "edit", edit_assignment_path(a.id.to_i) 
+	-else
+		=link_to "submit homework", assignment_path(a.id.to_i)
+	%br
+-if current_user.admin == "teacher"
+	=form_for @new_assignment, url: assignments_path, method: :post do |f|
+		=f.label :name
+		%br
+		= hidden_field_tag :cohort_id, @cohort.id
+		=f.text_field :name
+		%br
+		=f.label :due_date
+		%br
+		=f.date_field :due_date
+		%br
+		=f.label :description
+		=f.text_area :description
+		=f.submit "Add an assignment"
+
+
+
+

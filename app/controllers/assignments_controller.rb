@@ -1,4 +1,5 @@
 class AssignmentsController < ApplicationController
+	load_and_authorize_resource param_method: :assignments_params
 	def new
 		@new_assignment = Assignment.new
 	end
@@ -29,6 +30,12 @@ class AssignmentsController < ApplicationController
  			render edit_assignment_path
  		end
  	end
+
+ 	def show
+		@assignment = Assignment.find(params[:id])
+		@new_homework = @assignment.homeworks.build
+	end
+
 
  	private
 

@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :cohorts
   resources :enrollments
   resources :assignments
+  resources :homeworks
 end
