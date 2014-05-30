@@ -1,4 +1,5 @@
 class CohortsController <ApplicationController
+	load_and_authorize_resource param_method: :cohorts_params
 	def new 
 		@new_cohort = Cohort.new
 	end
