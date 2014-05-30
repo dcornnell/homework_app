@@ -9,10 +9,22 @@
 <body>
 	<% if current_user %>
 	<%= link_to "Log_out", logout_path %>
-<% else %>
-	<%= link_to "Log_in", login_path %>
+			<% if current_user.admin == "teacher" %>
+			teacher
+	
+			<% else %>
+				student
+
 	<br>
 	<% end %>
+	
+<% else %>
+	<%= link_to "Log_in", login_path %>
+
+	<br>
+	<% end %>
+
+	
 
 <%= yield %>
 <br>

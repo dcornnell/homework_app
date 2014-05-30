@@ -1,0 +1,8 @@
+=@homework.title
+=@homework.assignment.name
+=link_to "edit", edit_homework_path(@homework.id)
+
+-if current_user.admin == "teacher"
+	=form_for @homework, url: homework_path do |f|
+		=f.select :status, options_for_select([["complete", "complete"] , ["incomplete", "incomplete"]])
+		=f.submit

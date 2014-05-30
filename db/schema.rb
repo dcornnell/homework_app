@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140529171118) do
+ActiveRecord::Schema.define(version: 20140529204335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 20140529171118) do
     t.string  "github_link"
     t.string  "heroku_link"
     t.string  "notes"
+    t.string  "status",        default: "new"
+    t.integer "assignment_id"
   end
 
   create_table "locations", force: true do |t|
