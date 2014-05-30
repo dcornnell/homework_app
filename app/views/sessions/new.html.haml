@@ -1,7 +1,17 @@
-Login
 
-=form_tag sessions_path do
-	=label_tag :email
-	=text_field_tag :email
-	=password_field_tag :password
-	=submit_tag "Login"
+-if current_user
+
+-else
+		
+	=form_tag sessions_path do
+		%fieldset
+			%legend Login
+			%label Email
+			=text_field_tag :email
+			%label Password
+			=password_field_tag :password
+			=submit_tag "Login", class:"button"
+
+	=link_to "create account" , new_user_path
+
+

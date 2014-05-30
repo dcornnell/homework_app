@@ -1,33 +1,94 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>HomeworkApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-	<% if current_user %>
-	<%= link_to "Log_out", logout_path %>
-			<% if current_user.admin == "teacher" %>
-			teacher
-	
-			<% else %>
-				student
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<br>
-	<% end %>
-	
-<% else %>
-	<%= link_to "Log_in", login_path %>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
-	<br>
-	<% end %>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
 
-	
 
-<%= yield %>
-<br>
 
-</body>
+  <body>
+  
+
+ <div class="off-canvas-wrap" data-offcanvas>
+  <div class="inner-wrap">
+    <nav class="tab-bar">
+      <section class="left-small">
+        <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+      </section>
+
+      <section class="middle tab-bar-section">
+        <h1 class="title">IronYard</h1>
+      </section>
+
+      <% if current_user %>
+        <section class="right top-bar-section" style="margin-right:3%;">
+           <% if current_user.admin == "teacher" %>
+            teacher :
+          <% end %>
+           <% if current_user %>
+            
+            <%= link_to "#{show_name(session[:user_id])}", user_path((session[:user_id])) %>
+
+            <% end %>
+        </section>
+      <% end %>
+
+      
+    </nav>
+
+    <aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        <% if current_user %>
+          <li><%= link_to "Log out", logout_path %></li>
+          <% if current_user.admin == "teacher" %>
+            <li><label>Courses</label></li>
+            <li><%= link_to "All Courses", courses_path %></li>
+            <li><%= link_to "New Course", new_course_path %></li>
+            <li><label>Location</label></li>
+            <li><%= link_to "All Locations", locations_path %></li>
+            <li><%= link_to "New Location", new_location_path %></li>
+            <li><label>Cohorts</label></li>
+            <li><%= link_to "All Cohorts", cohorts_path %></li>
+            <li><%= link_to "New Cohort", new_cohort_path %></li>
+          <% end %>
+
+        <% else %>
+          <li><%= link_to "Log in", login_path %></li>
+        <% end %>
+
+
+       
+        
+
+      </ul>
+    </aside>
+
+    
+
+    <section class="main-section">
+       <%= yield %>
+    </section>
+
+  <a class="exit-off-canvas"></a>
+
+  </div>
+</div>
+
+ 
+  
+
+
+    <%= javascript_include_tag "application" %>
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/vendor/fastclick.js"></script>
+  </body>
 </html>
+
+

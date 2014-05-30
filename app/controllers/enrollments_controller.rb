@@ -8,7 +8,7 @@ class EnrollmentsController < ApplicationController
 		if session[:user_id] 
 			@new_enrollment.user_id = session[:user_id]
 			if @new_enrollment.save
-				redirect_to cohorts_path
+				redirect_to user_path(session[:user_id])
 			else
 				redirect_to :back
 			end

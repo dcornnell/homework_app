@@ -7,7 +7,7 @@ class AssignmentsController < ApplicationController
 	def create
 		@new_assignment = Assignment.new(assignment_params)
 		if @new_assignment.save
-			redirect_to assignments_path
+			redirect_to :back
 		else 
 			refirect_to new_assignment_path, notice: "your assignment has failed to be posted"
 		end

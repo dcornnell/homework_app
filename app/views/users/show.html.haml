@@ -1,8 +1,53 @@
-%h1 
-	=@user.first_name 
+.row
+%br
+.row
+	.large-4.columns
+		%ul{class:"pricing-table"}
+			%li{class:"title"}
+				=show_name(@user.id)
+			%li{class:"description"}
+				-if @user.admin == "teacher"
+					Teacher at the Iron Yard
+				-else
+					Student at the Iron Yard
+			%li
+				%table 
+					%caption 
+						Cohorts
+						=link_to "(add)" , new_enrollment_path
+					%th Course
+					%th Location
+					%th Start Date
+					-@user.cohorts.each do |c|
+						%tr
+							%td 
+								=link_to "#{c.course.title}" , cohort_path(c.id)
+							%td
+								=c.location.name
+							%td
+								=c.start_date
+				
+
+	.large-8.columns
+		%h3 All Assignments
+		%dl.accordion{"data-accordion" => ""}
+			-@user.cohorts.each do |c|
+				%dd
+					%a{href: "#panel#{c.id}"} 
+						=c.course.title
+					.div{id:"panel#{c.id}", class:"content"}
+						-c.assignments.each do |a|
+							=link_to "#{a.description}", assignment_path(a.id)
+							%br
 
 -@user.homeworks.each do |h|
 	=h.title
 	=h.status
 	=link_to "view",homework_path(h.id.to_i)
 	=link_to "edit", edit_homework_path(h.id.to_i)
+
+
+
+
+
+

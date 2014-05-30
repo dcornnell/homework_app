@@ -15,7 +15,7 @@ class UsersController < ApplicationController
    	@new_user.admin = "teacher"
 	end
  	if @new_user.save
- 		redirect_to users_path
+ 		redirect_to login_path
  	else
  		render new_user_path, notice: "you have failed to sign up"
  	end

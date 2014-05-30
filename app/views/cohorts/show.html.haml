@@ -1,5 +1,6 @@
 %h1
 	=@cohort.course.title
+	=@cohort.id
 %h2
 	=@cohort.location.name
 	=@cohort.start_date
@@ -22,7 +23,7 @@
 	=form_for @new_assignment, url: assignments_path, method: :post do |f|
 		=f.label :name
 		%br
-		= hidden_field_tag :cohort_id, @cohort.id
+		=f.hidden_field :cohort_id, :value => @cohort.id
 		=f.text_field :name
 		%br
 		=f.label :due_date
