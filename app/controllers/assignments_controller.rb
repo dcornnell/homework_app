@@ -1,4 +1,5 @@
 class AssignmentsController < ApplicationController
+	load_and_authorize_resource param_method: :assignments_params
 	def new
 		@new_assignment = Assignment.new
 	end

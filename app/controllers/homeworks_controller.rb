@@ -1,4 +1,5 @@
 class HomeworksController < ApplicationController
+	
 	def new
 		@new_homework = Homework.new
 	end
