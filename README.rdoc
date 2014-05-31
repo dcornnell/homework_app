@@ -1,28 +1,13 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Bugs i know about but arent top priority untill all functionality is complete
 
-Things you may want to cover:
+* thing about email being case sensitive add .downcase easy fix
 
-* Ruby version
+* that weird problem when java scrip frist loads doesnt work right out that gate something to do with
+	$ -> but in java not coffee. 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* easily edit other peoples stuff if you mess with url stuff
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+

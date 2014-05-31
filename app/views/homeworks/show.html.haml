@@ -27,6 +27,34 @@
 			%li{class:"cta-button"}
 				=link_to "edit", edit_homework_path(@homework.id), class:"button"
 
+.row
+	.small-11.small-centered-columns
+		%h6 Comments
+		%hr
+		-@homework.comments.each do |f|
+			
+			-if f.user
+				-if f.user.admin == "teacher"
+					.div{class:"success label"}
+						=f.user.first_name 
+				-else
+					.div{class:"label"}
+						=f.user.first_name
+				says:
+				%br
+			=f.description
+			%hr
+		%h6 Add a comment:
+		= form_for @new_comment, url: comments_path, method: :post do |f|
+			=f.hidden_field :commentable_id, value: @new_comment.commentable_id 
+			=f.hidden_field :commentable_type, value: @new_comment.commentable_type
+			=f.hidden_field :user_id, :value => current_user.id
+			comment:
+			%br
+			= f.text_area :description
+			=f.submit "submit", class: "button"
+
+
 
 
 

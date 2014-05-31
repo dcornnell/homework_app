@@ -21,3 +21,6 @@ STATEMENT:                SELECT a.attname, format_type(a.atttypid, a.atttypmod)
 	                 AND a.attnum > 0 AND NOT a.attisdropped
 	               ORDER BY a.attnum
 	
+LOG:  database system was shut down at 2014-05-31 18:31:55 EDT
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started

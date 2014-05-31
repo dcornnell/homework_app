@@ -9,16 +9,25 @@
 	=s.last_name
 	%br
 %h1 Assignments
--@cohort.assignments.each do |a|
-	
-	%br
-	=a.name
-	-if current_user.admin == "teacher"
-		-if a.name
-			=link_to "edit", edit_assignment_path(a.id.to_i) 
-	-else
-		=link_to "submit homework", assignment_path(a.id.to_i)
-	%br
+%table
+	%th Assignment
+	%th Due Date
+	%th View
+	-@cohort.assignments.each do |a|
+		%tr
+			%td
+				=a.name
+			%td
+				=a.due_date
+			%td
+				-if current_user.admin == "teacher"
+					-if a.name
+						=link_to "view", assignment_path(a.id.to_i)
+						=link_to "edit", edit_assignment_path(a.id.to_i) 
+				-else
+					=link_to "view", assignment_path(a.id.to_i)
+
+
 -if current_user.admin == "teacher"
 	=form_for @new_assignment, url: assignments_path, method: :post do |f|
 		=f.label :name

@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :enrollments
   resources :assignments
   resources :homeworks
+  resources :comments
 end

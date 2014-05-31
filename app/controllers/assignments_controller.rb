@@ -33,6 +33,7 @@ class AssignmentsController < ApplicationController
 
  	def show
 		@assignment = Assignment.find(params[:id])
+		@new_comment = @assignment.comments.build
 		@new_homework = @assignment.homeworks.build
 	end
 

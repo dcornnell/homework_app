@@ -1,7 +1,40 @@
+%br
 .row
-	.small-11.small-centered-columns
-		%h1
-			=@assignment.name
+	.large-8.columns
+		%ul{class:"pricing-table"}
+			%li{class:"title"}
+				=@assignment.name
+			%li{class:"description"}
+				=@assignment.description
+			%li{class:"bullet-item"}
+				=@assignment.due_date
+
+		%h6 Comments
+		%hr
+		-@assignment.comments.each do |f|
+			
+			-if f.user
+				-if f.user.admin == "teacher"
+					.div{class:"success label"}
+						=f.user.first_name 
+				-else
+					.div{class:"label"}
+						=f.user.first_name
+				says:
+				%br
+			=f.description
+			%hr
+		%h6 Add a comment:
+		= form_for @new_comment, url: comments_path, method: :post do |f|
+			=f.hidden_field :commentable_id, value: @new_comment.commentable_id 
+			=f.hidden_field :commentable_type, value: @new_comment.commentable_type
+			=f.hidden_field :user_id, :value => current_user.id
+			comment:
+			%br
+			= f.text_area :description
+			=f.submit "submit", class: "button"
+		
+	.large-4.columns
 		-if current_user.admin == "teacher"
 			%table
 				%th title
@@ -23,22 +56,21 @@
 
 
 		-else
+			
 			=form_for @new_homework, url: homeworks_path, method: :post do |f|
-				= f.hidden_field :assignment_id, :value => @assignment.id
-				Title
-				%br
-				=f.text_field :title
-				%br
-				Github Link:
-				%br
-				=f.text_field :github_link
-				%br
-				Heroku Link:
-				%br
-				=f.text_field :heroku_link
-				%br
-				Notes:
-				%br
-				=f.text_area :notes
-				%br
-				=f.submit "submit!"
+				%fieldset
+					%legend Submit Homework
+					= f.hidden_field :assignment_id, :value => @assignment.id
+					%label Title
+					=f.text_field :title
+					
+					%label Github Link:
+					=f.text_field :github_link
+				
+					%label Heroku Link:
+					=f.text_field :heroku_link
+					
+					%label Notes:
+					=f.text_area :notes
+					
+					=f.submit "submit!"
