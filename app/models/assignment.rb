@@ -3,4 +3,5 @@ class Assignment < ActiveRecord::Base
 	has_many :homeworks
 	has_many :comments, as: :commentable
 	belongs_to :cohort
+	validates_presence_of :cohort_id
 end

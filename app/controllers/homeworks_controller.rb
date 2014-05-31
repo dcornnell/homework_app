@@ -9,7 +9,7 @@ class HomeworksController < ApplicationController
 		if session[:user_id]
 			@new_homework.user_id = session[:user_id]
 			if @new_homework.save
-				redirect_to users_path
+				redirect_to user_path(session[:user_id])
 			else
 				render new_homework_path, notice: "you have failed to add this homework"
 			end

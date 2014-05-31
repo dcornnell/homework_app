@@ -1,8 +1,35 @@
-=@homework.title
-=@homework.assignment.name
-=link_to "edit", edit_homework_path(@homework.id)
+%br
+.row
+	.small-11.small-centered-columns
+		%ul{class:"pricing-table"}
+			%li{class:"title"}
+				=@homework.title
+			%li{class:"bullet-item"}
+				github link:
+			%li{class:"description"}
+				=@homework.github_link
+			%li{class:"bullet-item"}
+				heroku link:
+			%li{class:"description"}
+				=@homework.heroku_link
+			%li{class:"bullet-item"}
+				notes
+			%li{class:"description"}
+				=@homework.notes
+			%li{class:"price"}
+			
+				-if current_user.admin == "teacher"
+					=form_for @homework, url: homework_path do |f|
+						=f.select :status, options_for_select([["complete", "complete"] , ["incomplete", "incomplete"]])
+						=f.submit
+				-else
+					=@homework.status
+			%li{class:"cta-button"}
+				=link_to "edit", edit_homework_path(@homework.id), class:"button"
 
--if current_user.admin == "teacher"
-	=form_for @homework, url: homework_path do |f|
-		=f.select :status, options_for_select([["complete", "complete"] , ["incomplete", "incomplete"]])
-		=f.submit
+
+
+
+
+
+

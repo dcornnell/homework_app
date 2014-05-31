@@ -1,35 +1,44 @@
-%h1
-	=@assignment.name
--if current_user.admin == "teacher"
-	-@assignment.homeworks.each do |h|
-		=h.title
-		%br
-		=h.status
-		=h.user_id
-
-=form_for @new_homework, url: homeworks_path, method: :post do |f|
-	= f.hidden_field :assignment_id, :value => @assignment.id
-	Title
-	%br
-	=f.text_field :title
-	%br
-	Github Link:
-	%br
-	=f.text_field :github_link
-	%br
-	Heroku Link:
-	%br
-	=f.text_field :heroku_link
-	%br
-	Notes:
-	%br
-	=f.text_area :notes
-	%br
-	=f.submit "submit!"
+.row
+	.small-11.small-centered-columns
+		%h1
+			=@assignment.name
+		-if current_user.admin == "teacher"
+			%table
+				%th title
+				%th status
+				%th student
+				%th view
+				-@assignment.homeworks.each do |h|
+					-if h.title
+						%tr
+							%td
+								=h.title
+							%td
+								=h.status
+							%td
+								=show_name(h.user)
+							%td
+								=link_to "view", homework_path(h.id)
+					
 
 
-
-	
-
-
-	
+		-else
+			=form_for @new_homework, url: homeworks_path, method: :post do |f|
+				= f.hidden_field :assignment_id, :value => @assignment.id
+				Title
+				%br
+				=f.text_field :title
+				%br
+				Github Link:
+				%br
+				=f.text_field :github_link
+				%br
+				Heroku Link:
+				%br
+				=f.text_field :heroku_link
+				%br
+				Notes:
+				%br
+				=f.text_area :notes
+				%br
+				=f.submit "submit!"
