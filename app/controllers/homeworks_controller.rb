@@ -26,6 +26,7 @@ class HomeworksController < ApplicationController
 	def show
 		@homework = Homework.find(params[:id])
 		@new_comment = @homework.comments.build
+		
 		if current_user.admin == "teacher"
 			@homework.status ="reviewing"
 			@homework.save

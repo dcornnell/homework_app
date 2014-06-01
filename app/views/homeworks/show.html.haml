@@ -46,6 +46,7 @@
 			%hr
 		%h6 Add a comment:
 		= form_for @new_comment, url: comments_path, method: :post do |f|
+			=hidden_field_tag :receiver, value: @homework.user.email
 			=f.hidden_field :commentable_id, value: @new_comment.commentable_id 
 			=f.hidden_field :commentable_type, value: @new_comment.commentable_type
 			=f.hidden_field :user_id, :value => current_user.id

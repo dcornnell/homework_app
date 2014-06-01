@@ -1,3 +1,4 @@
+
 %br
 .row
 	.large-8.columns
@@ -26,6 +27,7 @@
 			%hr
 		%h6 Add a comment:
 		= form_for @new_comment, url: comments_path, method: :post do |f|
+			=hidden_field_tag :receiver, @assignment.id
 			=f.hidden_field :commentable_id, value: @new_comment.commentable_id 
 			=f.hidden_field :commentable_type, value: @new_comment.commentable_type
 			=f.hidden_field :user_id, :value => current_user.id
@@ -50,6 +52,7 @@
 								=h.status
 							%td
 								=show_name(h.user)
+
 							%td
 								=link_to "view", homework_path(h.id)
 					
@@ -60,7 +63,7 @@
 			=form_for @new_homework, url: homeworks_path, method: :post do |f|
 				%fieldset
 					%legend Submit Homework
-					= f.hidden_field :assignment_id, :value => @assignment.id
+					= f.hidden_field :assignment_id, value: "#{@assignment.id}"
 					%label Title
 					=f.text_field :title
 					

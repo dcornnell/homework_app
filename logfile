@@ -24,3 +24,5 @@ STATEMENT:                SELECT a.attname, format_type(a.atttypid, a.atttypmod)
 LOG:  database system was shut down at 2014-05-31 18:31:55 EDT
 LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
+ERROR:  column users.cohort_id does not exist at character 38
+STATEMENT:  SELECT "users".* FROM "users"  WHERE "users"."cohort_id" = 2
