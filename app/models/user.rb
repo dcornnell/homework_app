@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 	has_many :homeworks
 	has_many :assignments
 	has_many :comments
+	after_create :send_new_user
 	
 
 	def send_new_user
