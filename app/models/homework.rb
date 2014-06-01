@@ -3,4 +3,5 @@ class Homework < ActiveRecord::Base
 	belongs_to :assignment
 	has_many :comments, as: :commentable
 	validates_presence_of :assignment_id
+	validates_uniqueness_of :assignment_id, :scope => [:user_id]
 end

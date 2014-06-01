@@ -11,10 +11,10 @@ class HomeworksController < ApplicationController
 			if @new_homework.save
 				redirect_to user_path(session[:user_id])
 			else
-				render new_homework_path, notice: "you have failed to add this homework"
+				redirect_to :back, notice: "you have already submited homework for this assignment please edit that"
 			end
 		else 
-			redirect_to login_path, notice: "please log in to submit homework"
+			redirect_to :back, notice: "please log in to submit homework"
 		end
 
 	end

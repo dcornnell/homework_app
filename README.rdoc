@@ -4,10 +4,13 @@ Bugs i know about but arent top priority untill all functionality is complete
 
 * thing about email being case sensitive add .downcase easy fix
 
-* that weird problem when java scrip frist loads doesnt work right out that gate something to do with
+* that weird problem when java scrip first loads doesnt work right out that gate something to do with
 	$ -> but in java not coffee. 
 
 * easily edit other peoples stuff if you mess with url stuff
+
+* mailers dont seem to actually be sending, new user one works in production but not comments one. 
+
 
 
 
