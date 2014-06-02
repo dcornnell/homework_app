@@ -36,35 +36,33 @@
 					%a{href: "#panel#{c.id}"} 
 						=c.course.title
 					.div{id:"panel#{c.id}", class:"content"}
-						-if current_user.admin == "teacher"
-							=link_to "add new assignment", new_assignment_path, class: "button tiny"
-							%br
+						
 						-c.assignments.each do |a|
 							=link_to "#{a.description}", assignment_path(a.id)
 							%br
 							%br
-
-.row
-	.small-11.small-centered-columns
-		%table
-			%th Title
-			%th Status
-			%th Assignment
-			%th View/Edit
-			-@user.homeworks.each do |h|
-				%tr
-					%td 
-						=h.title
-					%td
-						=h.status
-					%td 
-						- if h.assignment
-							=h.assignment.name
-			
-					%td
-						=link_to "view",homework_path(h.id.to_i)
-						/
-						=link_to "edit", edit_homework_path(h.id.to_i)
+-if current_user.admin == "student"
+	.row
+		.small-11.small-centered-columns
+			%table
+				%th Title
+				%th Status
+				%th Assignment
+				%th View/Edit
+				-@user.homeworks.each do |h|
+					%tr
+						%td 
+							=h.title
+						%td
+							=h.status
+						%td 
+							- if h.assignment
+								=h.assignment.name
+				
+						%td
+							=link_to "view",homework_path(h.id.to_i)
+							/
+							=link_to "edit", edit_homework_path(h.id.to_i)
 
 
 

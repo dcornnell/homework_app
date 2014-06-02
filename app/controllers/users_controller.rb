@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
- 
+ 	load_and_authorize_resource param_method: :homeworks_params
  def index
  	@users = User.all
  end

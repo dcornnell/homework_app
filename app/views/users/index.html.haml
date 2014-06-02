@@ -1,11 +1,22 @@
 %br
--@users.each do |u|
-	=u.first_name
-	%br
-	=u.last_name
-	%br
-	=u.admin
-	%br
-	=link_to "Change Admin Status", change_admin_status_user_path(u.id), method: 'patch'
-	%br
-	%br
+%table
+	%th Name
+	%th Email
+	%th Cohorts
+	%th Status
+
+	-@users.each do |u|
+		%tr
+			%td
+				=show_name(u)
+			%td
+				=u.email
+			%td
+				-u.cohorts.each do |c|
+					=c.location.name
+					,
+					=c.course.title
+					%br
+			%td
+				=link_to "#{u.admin}", change_admin_status_user_path(u.id), method: 'patch'
+	
