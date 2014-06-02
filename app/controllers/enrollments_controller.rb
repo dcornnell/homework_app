@@ -11,7 +11,7 @@ class EnrollmentsController < ApplicationController
 			if @new_enrollment.save
 				redirect_to user_path(session[:user_id])
 			else
-				redirect_to :back
+				redirect_to :back, notice: "you are already enrolled in this cohort"
 			end
 		else
 			redirect_to login_path
