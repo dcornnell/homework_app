@@ -7,11 +7,13 @@
 			%li{class:"bullet-item"}
 				github link:
 			%li{class:"description"}
-				=@homework.github_link
+				%a{href: "#{@homework.github_link}"}
+					=@homework.github_link
 			%li{class:"bullet-item"}
 				heroku link:
 			%li{class:"description"}
-				=@homework.heroku_link
+				%a{href: "#{@homework.heroku_link}"}
+					=@homework.heroku_link
 			%li{class:"bullet-item"}
 				notes
 			%li{class:"description"}
@@ -21,7 +23,7 @@
 				-if current_user.admin == "teacher"
 					=form_for @homework, url: homework_path do |f|
 						=f.select :status, options_for_select([["complete", "complete"] , ["incomplete", "incomplete"]])
-						=f.submit
+						=f.submit :class => "button tiny"
 				-else
 					=@homework.status
 			%li{class:"cta-button"}

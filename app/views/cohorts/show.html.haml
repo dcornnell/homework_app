@@ -1,47 +1,62 @@
-%h1
-	=@cohort.course.title
-	=@cohort.id
-%h2
-	=@cohort.location.name
-	=@cohort.start_date
--@cohort.users.each do |s|
-	=s.first_name
-	=s.last_name
-	%br
-%h1 Assignments
-%table
-	%th Assignment
-	%th Due Date
-	%th View
-	-@cohort.assignments.each do |a|
-		%tr
-			%td
-				=a.name
-			%td
-				=a.due_date
-			%td
-				-if current_user.admin == "teacher"
-					-if a.name
-						=link_to "view", assignment_path(a.id.to_i)
-						=link_to "edit", edit_assignment_path(a.id.to_i) 
-				-else
-					=link_to "view", assignment_path(a.id.to_i)
+
+%br
+.row
+	.large-8.columns
+		%h1{style:"display:inline-block;"}
+			=@cohort.course.title
+		%hr
+			
+	
+		%h3 Assignments
+		%table
+			%th Assignment
+			%th Due Date
+			%th View
+			-@cohort.assignments.each do |a|
+				%tr
+					%td
+						=a.name
+					%td
+						-if a.due_date
+							=formatted_date(a.due_date)
+					%td
+						-if current_user.admin == "teacher"
+							-if a.name
+								=link_to "view", assignment_path(a.id.to_i)
+								=link_to "edit", edit_assignment_path(a.id.to_i) 
+						-else
+							=link_to "view", assignment_path(a.id.to_i)
 
 
--if current_user.admin == "teacher"
-	=form_for @new_assignment, url: assignments_path, method: :post do |f|
-		=f.label :name
+		-if current_user.admin == "teacher"
+			%fieldset
+				%legend Add an assignment
+				=form_for @new_assignment, url: assignments_path, method: :post do |f|
+					-f.label :name
+					=f.hidden_field :cohort_id, :value => @cohort.id
+					=f.text_field :name
+					=f.label :due_date
+					=f.date_field :due_date
+					=f.label :description
+					=f.text_area :description
+					=f.submit "Add an assignment", class:"button"
+	.large-4.columns
+		%h2 Members:
+		%hr 
+		-@cohort.users.each do |s|
+			-if s.admin == "teacher"
+				.div{class:"success label"}
+					=show_name(s)
+			-else
+				.div{class:"label"}
+					=show_name(s)
 		%br
-		=f.hidden_field :cohort_id, :value => @cohort.id
-		=f.text_field :name
 		%br
-		=f.label :due_date
+		%h2 Location: 
+		%h3
+			=@cohort.location.name
 		%br
-		=f.date_field :due_date
-		%br
-		=f.label :description
-		=f.text_area :description
-		=f.submit "Add an assignment"
+		=@cohort.location.address
 
 
 

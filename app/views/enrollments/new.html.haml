@@ -1,5 +1,5 @@
 =form_for @new_enrollment, url: enrollments_path, method: :post do |f|
 	
-	=f.select :cohort_id, Cohort.all.collect {|u| ["#{u.course.title}, #{u.location.name}, #{u.start_date}", u.id]}
+	=f.select :cohort_id, Cohort.all.collect {|u| ["#{u.course.title}, #{u.location.name}, #{formatted_date(u.start_date)}", u.id]}
 	%br
-	=f.submit "Join this cohort!"
+	=f.submit "Join this cohort!", class:"button"

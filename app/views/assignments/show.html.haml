@@ -8,7 +8,7 @@
 			%li{class:"description"}
 				=@assignment.description
 			%li{class:"bullet-item"}
-				=@assignment.due_date
+				=formatted_date(@assignment.due_date)
 
 		%h6 Comments
 		%hr
@@ -34,7 +34,7 @@
 			comment:
 			%br
 			= f.text_area :description
-			=f.submit "submit", class: "button"
+			=f.submit "submit", :class => "button tiny"
 		
 	.large-4.columns
 		-if current_user.admin == "teacher"
@@ -76,6 +76,6 @@
 					%label Notes:
 					=f.text_area :notes
 					
-					=f.submit "submit!"
+					=f.submit "submit!", :class => "button tiny"
 					-flash.each do |name, msg|
 						=content_tag :div, msg, class: name
