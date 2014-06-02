@@ -59,6 +59,8 @@
             <li><label>Cohorts</label></li>
             <li><%= link_to "All Cohorts", cohorts_path %></li>
             <li><%= link_to "New Cohort", new_cohort_path %></li>
+            <li><label>User</label></li>
+            <li><%= link_to "All Users", users_path %></li>
           <% end %>
 
         <% else %>
@@ -75,6 +77,9 @@
     
 
     <section class="main-section">
+        <% if flash[:notice] %>
+          <div class="notice"><%= flash[:notice] %></div>
+         <% end %>
        <%= yield %>
     </section>
 

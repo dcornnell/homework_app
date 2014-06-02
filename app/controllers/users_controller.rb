@@ -25,6 +25,17 @@ class UsersController < ApplicationController
  	@user = User.find(params[:id])
  end
 
+
+def change_admin_status
+		@user = User.find(params[:id])
+		if @user.admin =="teacher"
+			val = "student"
+		else
+			val = "teacher"
+		end
+		@user.update_attributes(:admin => val)
+		redirect_to :back
+	end
  	
 
 

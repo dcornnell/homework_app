@@ -1,4 +1,5 @@
 class EnrollmentsController < ApplicationController
+	load_and_authorize_resource param_method: :enrollments_params
 	def new
 		@new_enrollment = Enrollment.new
 	end

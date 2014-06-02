@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   get "login" => "sessions#new"
   get "logout" => "sessions#destroy"
   resources :sessions, only: [:new, :create, :destroy]
-  resources :users
+  resources :users do
+    member do
+      patch :change_admin_status
+    end
+  end
+
   resources :locations
   resources :courses
   resources :cohorts

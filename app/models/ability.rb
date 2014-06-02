@@ -5,10 +5,11 @@ class Ability
     
       user ||= User.new # guest user (not logged in)
       if user.admin == "teacher"
-        can :manage, [Assignment, Cohort, Location, Course]
+        can :manage, [ Assignment, Cohort, Location, Course, Homework, Comment, Enrollment]
       else
         can :read, :all
-
+        can [:create], [Homework, Comment, Enrollment]
+        can [:edit, :update], [Homework, Comment, Enrollment], :user_id => user.id
       end
     #
     # The first argument to `can` is the action you are giving the user

@@ -1,5 +1,5 @@
 class HomeworksController < ApplicationController
-	
+	load_and_authorize_resource param_method: :homeworks_params
 	def new
 		@new_homework = Homework.new
 	end
@@ -42,7 +42,11 @@ class HomeworksController < ApplicationController
 	def update
  		@homework = Homework.find(params[:id])
  		if @homework.update_attributes(homework_params)
- 			redirect_to user_path(current_user.id)
+ 			if current_user.admin == "teacher"
+ 				redirect_to assignment_path(@homework.assignment_id)
+ 			else
+ 				redirect_to user_path(current_user.id)
+ 			end
  		else 
  			render edit_homework_path
  		end

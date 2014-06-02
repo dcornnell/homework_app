@@ -4,4 +4,8 @@
 	%br
 	=u.last_name
 	%br
+	=u.admin
+	%br
+	=link_to "Change Admin Status", change_admin_status_user_path(u.id), method: 'patch'
+	%br
 	%br
