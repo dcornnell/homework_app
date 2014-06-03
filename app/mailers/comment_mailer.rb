@@ -2,13 +2,13 @@ class CommentMailer < ActionMailer::Base
   default from: "dcornnel@gmail.com"
 
 
-   def homework(receiver, comment)
+   def homework(email, comment)
   	@comment = comment
   	@receiver = receiver
   	mail(to: @receiver, subject: "Your homework has been commented on").deliver
   end
 
-  def assignment(receiver, comment, assignment)
+  def assignment(email, comment)
     @comment = comment
     @receiver = receiver
     @assignment = assignment
