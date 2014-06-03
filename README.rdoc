@@ -21,6 +21,9 @@ Bugs i know about but arent top priority untill all functionality is complete
 	- mailers
 
 
+3. tests
+	- how do i formate input:select tests cant figure that out?
+
 
 
 

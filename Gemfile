@@ -23,3 +23,9 @@ gem 'cancancan' , '~> 1.8'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+
+group :test do
+	gem 'rspec-rails'
+	gem 'capybara'
+	gem 'factory_girl_rails'
+end

@@ -6,6 +6,7 @@
 			%li{class:"title"}
 				=show_name(@user.id)
 			%li{class:"description"}
+				
 				-if @user.admin == "teacher"
 					Teacher at the Iron Yard
 				-else
