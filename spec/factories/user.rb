@@ -8,6 +8,18 @@ FactoryGirl.define do
 		admin "teacher"
 	end
 
+		factory :student, class: User do
+		first_name "Beavis"
+		last_name "Butthead"
+		email "email@aol.com"
+		password "qwerty"
+		password_confirmation "qwerty"
+		admin "student"
+
+	end
+
+
+
 end
 
 
