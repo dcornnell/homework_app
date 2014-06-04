@@ -12,18 +12,26 @@ class Comment < ActiveRecord::Base
 			email << self.user.email
 			self.commentable.assignment.cohort.users.where(admin: "teacher").each do |u|
 				email << u.email
+				email.each do |e|
+					CommentMailer.assignment(e, self)
+				end
+
 			end
 		else
 			self.commentable.cohort.users.each do |e|
 				email << e.email
+				email.each do |e|
+					CommentMailer.assignment(e, self)
+				end
 			end 
 		end
 
-		return email
+		
 	end
 
 
 end
+
 
 
 
