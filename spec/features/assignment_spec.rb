@@ -4,6 +4,7 @@ include AuthenticationHelper
 feature 'Assignments' do
 	let (:user) { FactoryGirl.create(:user) }
 	let (:student) { FactoryGirl.create(:student) }
+	let (:cohort) { FactoryGirl.create(:cohort) }
 	let (:assignment) { FactoryGirl.create(:assignment, cohort_id: cohort.id) }
 
 	scenario "User views assignments page" do
