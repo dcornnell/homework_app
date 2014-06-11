@@ -26,3 +26,29 @@ LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
 ERROR:  column users.cohort_id does not exist at character 38
 STATEMENT:  SELECT "users".* FROM "users"  WHERE "users"."cohort_id" = 2
+FATAL:  database "boulder_app_development" does not exist
+ERROR:  column "grades" does not exist
+STATEMENT:  ALTER TABLE "routes" RENAME COLUMN "grades" TO "grade_id"
+ERROR:  column "grades" does not exist
+STATEMENT:  ALTER TABLE "routes" RENAME COLUMN "grades" TO "grade_id"
+ERROR:  database "boulder_app_development" already exists
+STATEMENT:  CREATE DATABASE "boulder_app_development" ENCODING = 'utf8'
+ERROR:  database "boulder_app_test" already exists
+STATEMENT:  CREATE DATABASE "boulder_app_test" ENCODING = 'utf8'
+ERROR:  database "boulder_app_development" already exists
+STATEMENT:  CREATE DATABASE "boulder_app_development" ENCODING = 'utf8'
+ERROR:  database "boulder_app_test" already exists
+STATEMENT:  CREATE DATABASE "boulder_app_test" ENCODING = 'utf8'
+ERROR:  database "boulder_app_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "boulder_app_development"
+ERROR:  database "boulder_app_development" already exists
+STATEMENT:  CREATE DATABASE "boulder_app_development" ENCODING = 'utf8'
+ERROR:  relation "grade" does not exist
+STATEMENT:  ALTER TABLE "grade" RENAME COLUMN "type" TO "route_type"
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "routes".* FROM "routes"  WHERE "routes"."id" = $1 LIMIT 1
+ERROR:  database "boulder_app_development" already exists
+STATEMENT:  CREATE DATABASE "boulder_app_development" ENCODING = 'utf8'
+ERROR:  database "boulder_app_test" already exists
+STATEMENT:  CREATE DATABASE "boulder_app_test" ENCODING = 'utf8'

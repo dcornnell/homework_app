@@ -16,7 +16,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'bcrypt', '~> 3.1.7'
-
 gem 'pg'
 gem 'rails_12factor', group: :production
 gem 'cancancan' , '~> 1.8'
