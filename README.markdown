@@ -8,11 +8,13 @@ here is a link to it working: http://frozen-beach-7687.herokuapp.com/
 ## Installation/Setup
 
 1.Clone repot locally. 
+
 2.Install gems: 
-	- bundle install
+
+		- bundle install
 
 3. Set up database. im using postgres on this thing 
-	- rake db:create db:migrate
+		- rake db:create db:migrate
 
 ##Configure 
 it should work right out the gate 
