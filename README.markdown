@@ -14,6 +14,7 @@ here is a link to it working: http://frozen-beach-7687.herokuapp.com/
 		- bundle install
 
 3. Set up database. im using postgres on this thing 
+		
 		- rake db:create db:migrate
 
 ##Configure 
