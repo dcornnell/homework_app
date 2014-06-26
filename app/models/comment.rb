@@ -2,6 +2,7 @@ class Comment < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :commentable, polymorphic: :true
 	validates_presence_of :description
+	
 
 	after_create :send_mail
 
@@ -10,7 +11,7 @@ class Comment < ActiveRecord::Base
 		if self.commentable_type == "Homework"
 			user = self.user
 			email << self.user.email
-			self.commentable.assignment.cohort.users.where(admin: "teacher").each do |u|
+			self.commentable.assignment.cohort.users.where(role: "teacher").each do |u|
 				email << u.email
 				email.each do |e|
 					CommentMailer.assignment(e, self)

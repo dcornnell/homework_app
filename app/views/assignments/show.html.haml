@@ -15,7 +15,7 @@
 		-@assignment.comments.each do |f|
 			
 			-if f.user
-				-if f.user.admin == "teacher"
+				-if f.user.role == "teacher"
 					.div{class:"success label"}
 						=f.user.first_name 
 				-else
@@ -31,13 +31,10 @@
 			=f.hidden_field :commentable_id, value: @new_comment.commentable_id 
 			=f.hidden_field :commentable_type, value: @new_comment.commentable_type
 			=f.hidden_field :user_id, :value => current_user.id
-			comment:
-			%br
-			= f.text_area :description
-			=f.submit "submit", :class => "button tiny"
+			= render "/comments", f: f
 		
 	.large-4.columns
-		-if current_user.admin == "teacher"
+		-if current_user.role == "teacher"
 			%h3 Submissions
 			%table
 				%th title

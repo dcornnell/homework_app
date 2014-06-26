@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
     
       user ||= User.new
-      if user.admin == "teacher"
+      if user.role == "teacher"
         can :manage, [ Assignment, Cohort, Location, Course, Homework, Comment, Enrollment, User]
       else
         can [:read], [Homework, Comment, Cohort, Location, Assignment, User]

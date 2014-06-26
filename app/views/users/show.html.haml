@@ -7,7 +7,7 @@
 				=show_name(@user.id)
 			%li{class:"description"}
 				
-				-if @user.admin == "teacher"
+				-if @user.role == "teacher"
 					Teacher at the Iron Yard
 				-else
 					Student at the Iron Yard
@@ -15,7 +15,7 @@
 				%table 
 					%caption 
 						Cohorts
-						=link_to "(add)" , new_enrollment_path
+						=link_to "(join a cohort)" , new_enrollment_path
 					%th Course
 					%th Location
 					%th Start Date
@@ -39,10 +39,10 @@
 					.div{id:"panel#{c.id}", class:"content"}
 						
 						-c.assignments.each do |a|
-							=link_to "#{a.description}", assignment_path(a.id)
+							=link_to "#{a.name}", assignment_path(a.id)
 							%br
 							%br
--if current_user.admin == "student"
+-if current_user.role == "student"
 	.row
 		.small-11.small-centered-columns
 			%table
