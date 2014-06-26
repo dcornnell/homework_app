@@ -3,6 +3,7 @@ FactoryGirl.define do
 		name "make a horse racing game"
 		due_date "1999-09-09"
 		description	"this is a test"
+		# cohort_id "1"
 		
 	end
 

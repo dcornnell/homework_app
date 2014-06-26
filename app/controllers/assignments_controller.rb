@@ -9,7 +9,7 @@ class AssignmentsController < ApplicationController
 		if @new_assignment.save
 			redirect_to :back
 		else 
-			refirect_to new_assignment_path, notice: "your assignment has failed to be posted"
+			redirect_to new_assignment_path, notice: "your assignment has failed to be posted"
 		end
 	end
 
