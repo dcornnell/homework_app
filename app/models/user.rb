@@ -14,7 +14,5 @@ class User < ActiveRecord::Base
 		NewUserMailer.send_new_user(self)
 	end
 
-	def make_admin
-		self.admin == "teacher"
-	end
+
 end

@@ -20,7 +20,7 @@
 						-if a.due_date
 							=formatted_date(a.due_date)
 					%td
-						-if current_user.admin == "teacher"
+						-if current_user.role == "teacher"
 							-if a.name
 								=link_to "view", assignment_path(a.id.to_i)
 								=link_to "edit", edit_assignment_path(a.id.to_i) 
@@ -28,7 +28,7 @@
 							=link_to "view", assignment_path(a.id.to_i)
 
 
-		-if current_user.admin == "teacher"
+		-if current_user.role == "teacher"
 			%fieldset
 				%legend Add an assignment
 				=form_for @new_assignment, url: assignments_path, method: :post do |f|
@@ -44,7 +44,7 @@
 		%h2 Members:
 		%hr 
 		-@cohort.users.each do |s|
-			-if s.admin == "teacher"
+			-if s.role == "teacher"
 				.div{class:"success label"}
 					=show_name(s)
 			-else

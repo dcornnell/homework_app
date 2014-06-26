@@ -1,3 +1,4 @@
+
 %br
 .row
 	.small-11.small-centered-columns
@@ -7,20 +8,20 @@
 			%li{class:"bullet-item"}
 				github link:
 			%li{class:"description"}
-				%a{href: "#{@homework.github_link}"}
+				%a{href: "http://#{@homework.github_link}"}
 					=@homework.github_link
 			%li{class:"bullet-item"}
 				heroku link:
 			%li{class:"description"}
-				%a{href: "#{@homework.heroku_link}"}
+				%a{href: "http://#{@homework.heroku_link}"}
 					=@homework.heroku_link
 			%li{class:"bullet-item"}
 				notes
 			%li{class:"description"}
 				=@homework.notes
 			%li{class:"price"}
-			
-				-if current_user.admin == "teacher"
+
+				-if current_user.role == "teacher"
 					=form_for @homework, url: homework_path do |f|
 						=f.select :status, options_for_select([["complete", "complete"] , ["incomplete", "incomplete"]])
 						=f.submit :class => "button tiny"
@@ -36,7 +37,7 @@
 		-@homework.comments.each do |f|
 			
 			-if f.user
-				-if f.user.admin == "teacher"
+				-if f.user.role == "teacher"
 					.div{class:"success label"}
 						=f.user.first_name 
 				-else

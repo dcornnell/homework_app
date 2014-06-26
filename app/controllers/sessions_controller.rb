@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
  		session[:user_id] = user.id
  		redirect_to user_path(user.id), notice: "logged in"
  	else
- 		redirect_to locations_path
+ 		redirect_to login_path, notice: "Failed to log in "
  	end
 
  end

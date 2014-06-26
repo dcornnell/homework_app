@@ -25,12 +25,12 @@ class HomeworksController < ApplicationController
 
 	def show
 		@homework = Homework.find(params[:id])
+			if current_user.role == "teacher"
+			@homework.update_status
+		end
 		@new_comment = @homework.comments.build
 		
-		if current_user.admin == "teacher"
-			@homework.status ="reviewing"
-			@homework.save
-		end
+
 		
 	end
 
@@ -42,7 +42,7 @@ class HomeworksController < ApplicationController
 	def update
  		@homework = Homework.find(params[:id])
  		if @homework.update_attributes(homework_params)
- 			if current_user.admin == "teacher"
+ 			if current_user.role == "teacher"
  				redirect_to assignment_path(@homework.assignment_id)
  			else
  				redirect_to user_path(current_user.id)
